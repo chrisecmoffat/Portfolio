@@ -1,0 +1,197 @@
+Private Sub Workbook_Open()
+
+    Dim wSheet As Worksheet
+    
+    For Each wSheet In Worksheets
+        wSheet.Protect Password:="prod", UserInterFaceOnly:=True
+    Next wSheet
+
+'****************************************************************
+'Employee number to name conversion
+'For new employees add the following
+'****************************************************************
+'   If emp = "employee number" Then
+'        name = "employee name"
+'    End If
+'****************************************************************
+
+    Dim emp As String
+    Dim name As String
+
+    emp = Environ("username")
+    
+    If emp = "794193045" Then
+        name = "Kim Chopowick"
+    End If
+    
+    If emp = "743840605" Then
+        name = "Herbert Prince"
+    End If
+    
+    If emp = "794082248" Then
+        name = "Andy Pamatat"
+    End If
+    
+    If emp = "782644009" Then
+        name = "Lito Idagdag"
+    End If
+    
+    If emp = "806963849" Then
+        name = "Silvano Rendina"
+    End If
+    
+    If emp = "811356658" Then
+        name = "Henry Li"
+    End If
+    
+    If emp = "810591115" Then
+        name = "Lisa Lee-Wilson"
+    End If
+    
+    If emp = "855485264" Then
+        name = "Greg Marlagoutsos"
+    End If
+    
+    If emp = "819426305" Then
+        name = "Catherine Bravo"
+    End If
+    
+    If emp = "196411466" Then
+        name = "Richard Albert"
+    End If
+
+    If emp = "197412687" Then
+        name = "Michael Quach"
+    End If
+
+    If emp = "522581065" Then
+        name = "Duy Nguyen"
+    End If
+        
+    If emp = "529262123" Then
+        name = "Stephanie Boudreau"
+    End If
+    
+    If emp = "529516452" Then
+        name = "Brent Dibattista"
+    End If
+    
+    If emp = "530904218" Then
+        name = "Micheal Habashy"
+    End If
+    
+    If emp = "530872720" Then
+        name = "Arune Maharaj"
+    End If
+    
+    If emp = "524234986" Then
+        name = "Richard Guzas"
+    End If
+    
+    If emp = "791722572" Then
+        name = "Kazi Haque"
+    End If
+      
+    If emp = "801948928" Then
+        name = "Ronald Rusyn"
+    End If
+    
+    If emp = "310974936" Then
+        name = "Qasim Syed"
+    End If
+    
+    If emp = "537124968" Then
+        name = "Manny Grewal"
+    End If
+    
+    If emp = "196898241" Then
+        name = "Shawn Seeralan"
+    End If
+    
+    If emp = "312823255" Then
+        name = "Stephanie Nguyen"
+    End If
+    
+    If emp = "785906298" Then
+        name = "Holly Bach"
+    End If
+    
+    If emp = "809718406" Then
+        name = "Ryan Muldoon"
+    End If
+    
+    If emp = "535524508" Then
+        name = "Shawn Ahluwalia"
+    End If
+    
+    If emp = "306502642" Then
+        name = "Derek Swenson"
+    End If
+    
+    If emp = "314620071" Then
+        name = "Jacqueline Wu"
+    End If
+    
+    If emp = "844240234" Then
+        name = "Chris Moffat"
+    End If
+    
+    If emp = "318773553" Then
+        name = "Rivan Zora"
+    End If
+    
+    If emp = "319746152" Then
+        name = "Dharmil Gandhi"
+    End If
+    
+    If emp = "319870341" Then
+        name = "Jaspreet Chahal"
+    End If
+            
+    If emp = "534644265" Then
+        name = "Michael Maheu"
+    End If
+    
+    If emp = "321379935" Then
+        name = "Benjamin McCartney"
+    End If
+    
+    If emp = "192319333" Then
+        name = "Vinson Sichantha"
+    End If
+      
+    If emp = "805989985" Then
+        name = "Bruce Emberley"
+    End If
+    
+    If emp = "857946461" Then
+        name = "Michelle Ferguson"
+    End If
+    
+    If emp = "754414357" Then
+        name = "Don Lawlor"
+    End If
+    
+'Output to spreadsheet. The Cell range is hardcoded.
+'If for some reason the cell to be written moves enter new cell value below
+            
+'User name written to cell
+    Sheet02.Range("F3").Value = name
+    Sheet03.Range("f3").Value = name
+    Sheet04.Range("f3").Value = name
+    Sheet05.Range("f3").Value = name
+    Sheet06.Range("f3").Value = name
+    Sheet07.Range("f3").Value = name
+    Sheet08.Range("f3").Value = name
+    Sheet09.Range("f3").Value = name
+    Sheet10.Range("f3").Value = name
+    Sheet11.Range("f3").Value = name
+    Sheet12.Range("f3").Value = name
+    Sheet13.Range("f3").Value = name
+    
+'Date - only written if cell is blank to accomodate night shift opening spread sheet after 11:59pm
+    If Sheet01.Range("C4").Value = "" Then
+        Sheet01.Range("C4").Value = Date
+    End If
+
+End Sub
