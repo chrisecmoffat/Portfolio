@@ -19,7 +19,7 @@ Sub JobsListCompletion()
 'Take values from Column B and populate array
     For i = 1 To LastRow
         AppJobNameList(i) = Cells(i, 2).Value
-    Next i
+    Next i 
 
 'Takes values input from user popup, separates by space, populates array
 'Start by trimming leading/trailing spaces
