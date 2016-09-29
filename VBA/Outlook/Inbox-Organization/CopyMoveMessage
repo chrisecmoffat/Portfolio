@@ -5,7 +5,7 @@ Sub MoveCopyMessage()
     Dim objDestFolder As Outlook.MAPIFolder
     Dim objDestFolder2 As Outlook.MAPIFolder
     Dim objItem As Outlook.MailItem
-    Dim objCopy As Outlook.MailItem
+    Dim objCopy As Outlook.MailItem 
          
     Set objNS = Application.GetNamespace("MAPI")
     Set Selection = ActiveExplorer.Selection
