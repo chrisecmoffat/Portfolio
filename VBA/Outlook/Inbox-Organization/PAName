@@ -1,4 +1,5 @@
 Sub PA_Rename()
+On Error GoTo ProcExit
 
 Dim myolApp As Outlook.Application
 Dim aItem As Object
@@ -22,13 +23,16 @@ Set aItem = Application.ActiveExplorer.Selection.Item(1)
         Set objProperty = aItem.UserProperties.Add(UserDefinedFieldName, Outlook.OlUserPropertyType.olText)
         strAnalyst = objProperty.Value
         If strAnalyst = "" Then
-            objProperty.Value = getName()
-        ElseIf InStr(strAnalyst, getName()) > 0 Then
+            objProperty.Value = "Chris Moffat"
+        ElseIf InStr(strAnalyst, "Chris Moffat") > 0 Then
             'Do nothing, name is already present
         Else
             objProperty.Value = objProperty.Value + " " + "Chris Moffat"
         End If
         aItem.Save
     Next
+    
+ProcExit:
+  Exit Sub
 
 End Sub
