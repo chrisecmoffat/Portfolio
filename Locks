@@ -1,0 +1,129 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class Processor implements Runnable {
+	
+	private int id;
+	private volatile int count = 0;
+	private int blockSize;
+	private int startBlock;
+	private int endBlock;
+	
+	final Counter myCounter = new Counter(new ReentrantLock());
+	
+	public Processor(int id, int blockSize) {
+	
+		this.id = id;
+		this.blockSize = blockSize;
+		this.startBlock = (id * blockSize);
+		this.endBlock = ((id * blockSize) + blockSize);
+	}
+	
+	public void run() {
+		
+		for (int i = startBlock; i < endBlock; i++) {		
+
+			String b = Integer.toBinaryString(i);
+			
+			if (b.length() % 2 == 0) {
+				
+				String c = (b.substring(0, ((b.length()/2)-1)));
+				String d = (b.substring(((b.length()/2)+1), (b.length())));
+				
+				if (((c).equals(new StringBuilder(d).reverse().toString()))) {
+					//System.out.println(Integer.parseInt(b,2) + " binary: " + b);
+					//list1.add(Integer.parseInt(b,2));
+					//count++;
+					myCounter.
+				} 
+			}
+			else {
+				String c = (b.substring(0, ((b.length()-1)/2)));
+				String d = (b.substring(((b.length()+1)/2), (b.length())));	
+				
+				if (((c).equals(new StringBuilder(d).reverse().toString()))) {
+					//System.out.println(Integer.parseInt(b,2) + " binary: " + b);
+					//list1.add(Integer.parseInt(b,2));
+					//count++;
+					myCounter.add();
+				} 
+			}
+		}
+		System.out.println("Completed: " + id + " Count: " + myCounter.getCount() + " List: " + list1);
+		
+		
+	}
+
+}
+
+
+public class Bux {
+	
+	//private static List<Integer> list1 = new ArrayList<Integer>();
+	
+
+	public static void main(String[] args) {
+		
+		long start = System.currentTimeMillis();
+		
+		ExecutorService executor = Executors.newFixedThreadPool(4);
+		
+		System.out.println("All tasks submitted.");
+		
+		for (int i = 0; i < 8; i++) {
+			executor.submit(new Processor(i, 100));
+		}
+		
+		executor.shutdown();
+		
+		try {
+			executor.awaitTermination(2, TimeUnit.DAYS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		long end = System.currentTimeMillis();
+		System.out.println("All tasks completed.");		
+		System.out.println("Time taken: " + (end - start));
+		
+	}	
+}
+
+class Counter {
+    private Lock lock; // Lock to protect our counter
+    private int count; // Integer to hold count
+    private static List<Integer> list1 = new ArrayList<Integer>();
+    
+    public Counter(Lock myLock) {
+        this.lock = myLock;
+    }
+    
+    private void add(ArrayList<Integer> a) {
+    	lock.lock();
+        try {
+        	add(a);
+            count++;
+        } finally {
+            lock.unlock();
+        }
+		
+	}
+
+	public final int getCount() {
+        lock.lock();
+        try {
+            return count;
+        } finally {
+            lock.unlock();
+        }
+        
+    }
+}
