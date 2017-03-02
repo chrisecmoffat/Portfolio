@@ -27,13 +27,14 @@ class Processor implements Runnable {
 	}
 	
 	public void run() {
-		
+				
 		startThread = System.currentTimeMillis();
 		
-		//while(myCounter.isTerminated()) {
-		
 		for (int i = startBlock; i < endBlock; i++) {	
-
+			
+			if (myCounter.checkStatus())
+				break;
+			
 			String intStr = Integer.toBinaryString(i);
 			
 			// Palindrome algo, checks binary string odd or even
@@ -59,8 +60,6 @@ class Processor implements Runnable {
 		endThread = System.currentTimeMillis();
 		myCounter.threadTime(endThread - startThread);
 	}
-	//Thread.currentThread().interrupt();
-	//}
 }
 
 
@@ -70,9 +69,9 @@ public class bigBucks {
 		
 		long startTime;
 		long endTime;
-		final int blockSize = 100;
+		final int blockSize = 100000000;
 		final int poolSize = 8;
-		final int timeOut = 30;
+		final int timeOut = 10;
 		final Counter myCounter = new Counter(new ReentrantLock());
 		
 		startTime = System.currentTimeMillis();
@@ -85,10 +84,10 @@ public class bigBucks {
 		executor.shutdown();
 		
 		try {
-			executor.awaitTermination(timeOut, TimeUnit.SECONDS);
+			if (!executor.awaitTermination(timeOut, TimeUnit.SECONDS))
+				myCounter.terminateThread();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			myCounter.Terminate(false);
 		}
 
 		Collections.sort(myCounter.getList());
@@ -114,19 +113,29 @@ class Counter {
     public static int count;
     public static long meanTime;
     public static long maxTime; 
-    public static boolean status = true; 
+    public static boolean status = false; 
 	public static List<Integer> palindromeList = new ArrayList<Integer>();
     
     public Counter(Lock myLock) {
         this.lock = myLock;
     }
 
-	public boolean isTerminated() {
-		return true;
+	public boolean checkStatus() {
+        lock.lock();
+        try {
+    		return status;
+        } finally {
+            lock.unlock();
+        }
 	}
 	
-	public void Terminate(boolean status) {
-		status = false;
+	public void terminateThread() {
+        lock.lock();
+        try {
+    		status = true;
+        } finally {
+            lock.unlock();
+        }
 	}
 
 	public void unlock() {
