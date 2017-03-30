@@ -1,4 +1,4 @@
-Private Sub SetupWorkbook()
+Private Sub Workbook_Open()
 
     Dim wSheet As Worksheet
     
