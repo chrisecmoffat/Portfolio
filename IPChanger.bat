@@ -1,4 +1,5 @@
-REM This was a personal cmd popup to change IP's on the fly
+REM This is a cmd popup to change IP's on the fly
+REM Changing static IP's in Windows panels is too slow when moving between data centers
 
 @echo off
 echo Choose:
