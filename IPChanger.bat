@@ -1,4 +1,4 @@
-IPChanger
+REM This was a personal cmd popup to change IP's on the fly
 
 @echo off
 echo Choose:
