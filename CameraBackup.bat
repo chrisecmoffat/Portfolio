@@ -1,4 +1,7 @@
-TITLE Camera_1 Cleanup
+REM Every 6 months, Task Scheduler would run this script to zip up all pictures and delete the remaining .jpg's
+REM This saved space and logged security pictures for retention
+
+TITLE Camera Cleanup
 
 @ECHO ON
 @ECHO ----------------------------------------------------------------------------------->>C:\camtest\images\Camera_1.log
