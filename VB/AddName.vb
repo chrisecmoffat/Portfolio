@@ -1,4 +1,4 @@
-Sub Addname()
+Sub AddName()
     On Error GoTo ProcExit
 
     Dim myolApp As Outlook.Application
