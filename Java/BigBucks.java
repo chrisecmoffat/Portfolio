@@ -1,5 +1,5 @@
 // Chris Moffat
-// Ecobee Assignment
+// Senoir Developer Assignment
 // CivicMining LLC. challenge:
 // March 2, 2017
 //
