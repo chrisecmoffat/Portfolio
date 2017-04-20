@@ -1,0 +1,49 @@
+html {
+  text-align: center;
+}
+
+#homebtn {
+		text-align: center;
+    display: inline-block;
+    width: 99%;
+}
+
+#game {
+  color: white;
+  position:fixed;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat:no-repeat;
+  text-align: center;
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #2b5876, #4e4376);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #8f5795, #974042); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: auto;
+}
+
+
+#box {
+  border: 3px solid black;
+  width: 40%;
+  display: inline-block;
+  padding: 25px;
+  background: rgba(0,0,0, 0.2);
+	box-shadow: 0 0 10px rgba(0,0,0, 0.9);
+}
+
+.ui.inverted.red.button {
+    font-size: 1.5em;
+}
+
+.ui.inverted.green.button {
+  font-size: 1.5em;
+}
+
+.ui.inverted.button {
+  font-size: 1.5em;
+}
