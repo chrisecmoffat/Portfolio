@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Single Deck Black Jack</title>
+
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" type="text/css" href="css/black-jack.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+  <div id="game">
+    <div id="homebtn">
+      <a href="../../index.html" style="color: white;"><i class="fa fa-home fa-5x"></i></a>
+    </div>
+    <br>
+    <div id="box">
+      <h1>Single Deck Black Jack</h1>
+
+      <h1><i class="fa fa-desktop" aria-hidden="true"></i></h1>
+      <h3>Dealer Card 1: <span id="dealerDisplay1">0</span></h1>
+      <h3>Dealer Card 2: <span id="dealerDisplay2">0</span></h1>
+      <h3>Dealer Next Card: <span id="dealerNextCard">0</span></h1>
+      <h3>Total: <span id="dealerTotal">0</span></h1>
+
+      <br><h2> <i class="fa fa-ravelry" aria-hidden="true"></i> Result: <span id="result1"></span></h1></br>
+
+      <h1><i class="fa fa-user-circle" aria-hidden="true"></i></h1>
+      <h3>Player Card 1: <span id="playerDisplay1">0</span></h1>
+      <h3>Player Card 2: <span id="playerDisplay2">0</span></h1>
+      <h3>Player Next Card: <span id="playerNextCard">0</span></h1>
+      <h3>Total: <span id="playerTotal">0</span></h1>
+
+      <button id="hit" class="ui inverted red button">Hit Me</button>
+      <button id="stay" class="ui inverted green button">Stay</button>
+      <button id="reset" class="ui inverted button">Reset</button>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/black-jack.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</html>
