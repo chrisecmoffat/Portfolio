@@ -1,0 +1,43 @@
+body {
+  font-family: 'Roboto';
+}
+
+.winner {
+  color: green;
+}
+
+input {
+  border: none;
+}
+
+p span {
+  font-size: 1.8em;
+}
+
+#homebtn {
+		text-align: center;
+    display: inline-block;
+    width: 99%;
+}
+
+html {
+  height: 100%;
+  background-size: cover;
+  background: #70bg32;
+  background-repeat:no-repeat;
+  background: #4CA1AF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #C4E0E5, #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#game {
+  position:fixed;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: auto;
+}
