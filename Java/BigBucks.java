@@ -135,17 +135,17 @@ public class BigBucks {
 class Counter {
 
 	private Lock lock;
-    private static long meanTime;
-    private static long maxTime; 
-    private static int taskNum;
-    private static int numCount;
-    private static int count;
-    private static boolean status = false; 
+	private static long meanTime;
+	private static long maxTime; 
+	private static int taskNum;
+	private static int numCount;
+	private static int count;
+	private static boolean status = false; 
 	private static List<Integer> palindromeList = new ArrayList<Integer>();
     
 	protected Counter(Lock myLock) {
-        this.lock = myLock;
-    }
+        	this.lock = myLock;
+	}
 	
 	protected void unlock() {
 		lock.unlock();
@@ -153,24 +153,24 @@ class Counter {
 	
 	protected void addList(int match) {
 		lock.lock();
-        try {
-        	palindromeList.add(match);
-        } finally {
-            lock.unlock();
-        }
+		try {
+			palindromeList.add(match);
+		} finally {
+			lock.unlock();
+		}
 	}
 	
 	protected void threadTime(long time, int addValue) {
-        lock.lock();
-        try {
-            if (time > maxTime)
-            	maxTime = time;
-            count =+ addValue;
-            meanTime = meanTime + ((time - meanTime) / count);
-        } finally {
-            lock.unlock();
-        }
-    }
+		lock.lock();
+		try {
+		    if (time > maxTime)
+			maxTime = time;
+		    count =+ addValue;
+		    meanTime = meanTime + ((time - meanTime) / count);
+		} finally {
+		    lock.unlock();
+		}
+	}
 	
 	protected void taskTotal(int id) {
         lock.lock();
@@ -220,131 +220,4 @@ class Counter {
         return maxTime;
     }
 }
-					myStats.addList(Integer.parseInt(intStr, 2));
-				} 
-			}
-		}
-		endThread = System.currentTimeMillis();
-		myStats.threadTime(endThread - startThread);
-	}
-
-	public int getBlockSize() {
-		return blockSize;
-	}
-
-	public void setBlockSize(int blockSize) {
-		this.blockSize = blockSize;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-}
-
-public class bigBucks {
-	
-	public static void main(String[] args) throws InterruptedException {
 		
-		long startTime;
-		long endTime;
-		final int timeOut = 10;
-		final int poolSize = 8;
-		final int blockSize = 1000;
-		final Counter myStats = new Counter(new ReentrantLock());
-		
-		startTime = System.currentTimeMillis();
-		ExecutorService executor = Executors.newFixedThreadPool(poolSize);
-		
-		// Spins up 8 threads
-		for (int i = 0; i < 8; i++)
-			executor.submit(new Processor(i, blockSize));
-		
-		executor.shutdown();
-		
-		try {
-			if (!executor.awaitTermination(timeOut, TimeUnit.SECONDS))
-				myStats.terminateThread();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		Collections.sort(myStats.getList());
-		
-		endTime = System.currentTimeMillis();
-		
-		System.out.println("");
-		System.out.println("Palindromes:");
-		System.out.println("...");
-		for (int i : myStats.getList()) 
-		    System.out.println(i + " binary: " + Integer.toBinaryString(i));
-		System.out.println("...");
-		System.out.println("Performance (millis): max: " + myStats.getMax() + " mean: " + myStats.getMean());
-		System.out.println("Palindromes computed: " + myStats.getList().size());
-		System.out.println("Tasks run: ");
-		System.out.println("Duration: " + ((endTime - startTime)));				
-	}	
-}
-
-class Counter {
-
-	private Lock lock;
-    private static long meanTime;
-    private static long maxTime; 
-    private static boolean status = false; 
-	private static List<Integer> palindromeList = new ArrayList<Integer>();
-    
-	protected Counter(Lock myLock) {
-        this.lock = myLock;
-    }
-	
-	protected void unlock() {
-		lock.unlock();
-	}
-	
-	protected void addList(int match) {
-		lock.lock();
-        try {
-        	palindromeList.add(match);
-        } finally {
-            lock.unlock();
-        }
-	}
-	
-	protected void threadTime(long time) {
-        lock.lock();
-        try {
-            if (time > maxTime)
-            	maxTime = time;
-            if (meanTime == 0)
-            	meanTime = time;
-            else
-            	meanTime = (meanTime + time) / 2;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-	protected void terminateThread() {
-		status = true;
-	}
-	
-	protected boolean checkStatus() {
-		return status;
-	}
-	
-	protected List<Integer> getList() {
-    	return palindromeList;
-	}
-	
-	protected long getMean() {
-        return meanTime;
-    }
-	
-	protected long getMax() {
-        return maxTime;
-    }
-}
